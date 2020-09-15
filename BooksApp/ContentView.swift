@@ -16,9 +16,9 @@ struct ContentView: View {
                 Color("background").edgesIgnoringSafeArea(.all)
                 
                 VStack{
-                    SearchBar(text: $searchText) 
-                    padding(.top,-30)
-                    List(Book.books.filter({searchText.isEmpty ? true : ($0.authorName.contains(searchText) || $0.bookName.contains(searchText))})){
+                    SearchBar(text: $searchText)
+                        .padding()
+                    List(Book.books.filter({searchText.isEmpty ? true : ($0.authorName.uppercased().contains(searchText.uppercased()) || $0.bookName.uppercased().contains(searchText.uppercased()))})){
                         
                         book in
                         
